@@ -1,0 +1,15 @@
+#!/bin/bash
+
+stuff=`ls`
+
+for i in $stuff; do
+    echo $i
+    if [ -d "$i" ]; then
+	cd $i
+	cp ../rec .
+	./rec
+	rm rec
+	cd ..
+    fi
+done
+

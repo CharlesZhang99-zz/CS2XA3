@@ -1,0 +1,52 @@
+#!/bin/bash
+
+echo "creating subdirectory WEEK_DAYS"
+mkdir WEEK_DAYS
+
+echo "creating file WEEK_DAY2 in WEEK_DAYS"
+
+cd WEEK_DAYS
+touch WEEK_DAY2
+echo "%% tuesday %" > WEEK_DAY2
+
+echo "listing directory WEEK_DAYS"
+ls
+
+echo "displaying file WEEK_DAY2"
+echo "$(cat WEEK_DAY2)"
+
+cd ..
+
+var=`ls -la | grep WEEK\_DAYS`
+
+echo "original permissions of WEEK_DAYS: ${var:0:10}"
+echo "change it to dr--------"
+chmod a-x WEEK\_DAYS
+chmod a-w WEEK\_DAYS
+chmod go-r WEEK\_DAYS
+
+var=`ls -la | grep WEEK\_DAYS`
+echo "new permissions of WEEK_DAYS: ${var:0:10}"
+
+echo "change it to dr--r--r--"
+chmod a+r WEEK\_DAYS
+var=`ls -la | grep WEEK\_DAYS`
+echo "new permissions of WEEK_DAYS: ${var:0:10}"
+
+echo "change it to drwx-wx--x"
+chmod o-r WEEK\_DAYS
+chmod ug+w WEEK\_DAYS
+chmod a+x WEEK\_DAYS
+
+var=`ls -la | grep WEEK\_DAYS`
+echo "new permissions of WEEK_DAYS: $()"
+
+echo "trying to remove WEEK_DAYS by rm"
+rm WEEK_DAYS
+
+echo "trying to remove WEEK_DAYS by rmdir"
+rmdir WEEK_DAYS
+
+echo "trying to remove WEEK_DAYS by rm -r"
+rm -r WEEK_DAYS
+
