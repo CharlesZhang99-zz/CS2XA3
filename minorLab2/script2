@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for i in `seq 1 10`; do
+	#touch lab2_file_$i
+	#let i1=i+1
+        #let i2=i+2
+	echo "$i$(($i+1))$(($1+2))" > lab2_file_$i
+	echo "lab2_file_$i: "
+	echo `cat lab2_file_$i`
+done
+
+rm -r lab2_file_*
